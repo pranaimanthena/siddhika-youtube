@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>Youtube Clone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <style>
+    p{
+  font-family:Roboto;
+  margin-top:0;
+  margin-bottom:0;
+
+
+}
+body{
+  margin:0;
+  padding-top:80px;
+  padding-left:96px;
+  padding-right:24px;
+  background-color:rgb(248,248,248);
+}
+.header{
+  height:55px;
+  display:flex;
+  flex-direction: row;
+  justify-content:space-between;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  background-color:white;
+  border-bottom-width:1px;
+  border-bottom-style:solid;
+  border-bottom-color:rgb(232, 228, 228);
+  z-index:100;
+}
+.left-section{
+  
+  display:flex;
+  align-items:center;
+}
+.menu{
+  height:24px;
+  margin-right: 24px;
+  margin-left:24px;
+}
+.logo{
+  height:20px;
+}
+.middle-section{
+  flex:1;
+  margin-left:70px;
+  margin-right:35px;
+  max-width:500px;
+  
+  display:flex;
+  align-items:center;
+  
+
+}
+.searchb{
+  height:40px;
+  width:66px;
+  background-color:rgb(240,240,240);
+  border-style:solid;
+  border-color:rgb(192,192,192);
+  border-width:1px;
+  margin-left:-1px;
+  margin-right:10px;
+  position:relative;
+}
+.searchb,
+.vsearchb,
+.uploadcontainer,
+.appscontainer,
+.notification-icon-container
+{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+.searchb .tooltip,
+.vsearchb .tooltip,
+.uploadcontainer .tooltip,
+.appscontainer .tooltip,
+.notification-icon-container .tooltip
+{
+  font-family: Roboto,Arial;
+  position:absolute;
+  background-color:gray;
+  color:white;
+  padding-top:4px;
+  padding-bottom:4px;
+  padding-right:8px;
+  padding-left:8px;
+  border-radius:2px;
+  font-size:12px;
+  bottom: -30px;
+  opacity:0;
+  transition:opacity 0.15s;
+  pointer-events:none;
+  white-space:nowrap;
+
+}
+.searchb:hover .tooltip,
+.vsearchb:hover .tooltip,
+.uploadcontainer:hover .tooltip,
+.appscontainer:hover .tooltip,
+.notification-icon-container:hover .tooltip
+
+{
+  opacity:1;
+}
+.vsearchb{
+  height:40px;
+  width:40px;
+  border-radius:20px;
+  border:none;
+  background-color:rgb(245,245,245);
+  
+}
+.bar{
+  flex:1;
+  height:36.5px;
+  border-width:1px;
+  border-style:solid;
+  border-color:rgb(192,192,192);
+  font-size:16px;
+  border-radius:2px;
+  box-shadow: inset 1px 2px 3px rgba(0,0,0,0.05);
+  padding-left:16px;
+  width:0;
+
+}
+.bar::placeholder{
+  font-family:Roboto, Arial;
+  font-size:16px;
+}
+.searchimg{
+  height:25px;
+  margin-top:4px;
+}
+.vsearchimg{
+  height:24px;
+  
+}
+.right-section{
+  width:180px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-right:20px;
+  flex-shrink:0;
+  
+}
+.upload{
+  height:24px;
+
+}
+.apps{
+  height:24px;
+
+}
+.notif{
+  height:24px;
+
+
+}
+.notification-icon-container{
+  position:relative;
+
+}
+.notification-count{
+  position:absolute;
+  top:-2px;
+  right:-5px;
+  background-color:rgb(200,0,0);
+  color:white;
+  font-size:11px;
+  font-family:Roboto,Arial;
+  padding: 2px 5px 2px 5px;
+  border-radius:10px;
+
+
+}
+.pfp{
+  height:32px;
+  border-radius:16px;
+  
+
+}
+.sidebar{
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  top:55px;
+  width:72px;
+  z-index:200;
+  padding-top:5px;
+}
+.sidebarlink{
+  height:74px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  cursor:pointer;
+
+}
+.sidebarlink:hover{
+  background-color:rgb(235,235,235)
+  
+}
+.sidebarlink img{
+  height:24px;
+  margin-bottom:4px;
+
+}
+.sidebarlink div{
+  font-family:Roboto,Arial;
+  font-size:10px;
+}
+
+.thumbnail{
+  width:100%;      
+  
+
+}
+
+.pic{
+  width:36px;
+  border-radius:50px;
+  
+  
+}
+
+
+
+.thumbnail-row{
+  margin-bottom:8px;
+  position:relative;
+}
+
+.title{
+  margin-top:0;
+  margin-bottom:10px;
+  
+  font-size:14px;
+  font-weight:500;
+  line-height:20px;
+}
+.author,.stats{
+  font-size:12px;
+  color:rgb(96,96,96);
+}
+.author{
+  margin-bottom:4px;
+
+}
+.description{
+  display:grid;
+  grid-template-columns:50px 1fr;
+}
+.grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap:16px;
+  row-gap:40px;
+}
+@media (max-width: 750px){
+  .grid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width:751px) and (max-width:999px){
+  .grid{
+    grid-template-columns:1fr 1fr 1 fr;
+  }
+}
+@media (min-width:1000px){
+  .grid{
+    grid-template-columns:1fr 1fr 1 fr 1fr;
+  }
+}
+.video-time{
+  background-color:black;
+  color:white;
+  position:absolute;
+  bottom:8px;
+  right:5px;
+  font-family:Roboto, Arial;
+  font-size:12px;
+  font-weight:500;
+  padding: 4px;
+  border-radius:2px;
+
+}
+
+  </style>
+
+  </head>
+  <body>
+    <header class="header">
+      <div class="left-section">
+        <img class="menu" src="https://supersimple.dev/exercises/youtube/icons/hamburger-menu.svg">
+        <img class="logo" src="https://supersimple.dev/exercises/youtube/icons/youtube-logo.svg">
+      </div>
+      <div class="middle-section">
+        <input class="bar" type="text" placeholder="Search">
+        <button class="searchb">
+          <img class="searchimg" src="	https://supersimple.dev/exercises/youtube/icons/search.svg">
+          <div class="tooltip">Search</div>
+        </button>
+        <button class="vsearchb">
+          <img class="vsearchimg" src="https://supersimple.dev/exercises/youtube/icons/voice-search-icon.svg">
+          <div class="tooltip">Search with your voice</div>
+        </button>
+      </div>
+      <div class="right-section">
+       <div class="uploadcontainer">
+        <img class="upload" src="	https://supersimple.dev/exercises/youtube/icons/upload.svg">
+        <div class="tooltip">Create</div>
+       </div>
+       
+        
+       <div class="appscontainer">
+        <img class="apps" src="	https://supersimple.dev/exercises/youtube/icons/youtube-apps.svg">
+        <div class="tooltip">YouTube apps</div>
+       </div>
+       
+        
+      
+      
+        <div class="notification-icon-container">
+        <img class="notif" src="https://supersimple.dev/exercises/youtube/icons/notifications.svg">
+        <div class="notification-count">3</div>
+        <div class="tooltip">Notifications</div>
+        </div>
+
+        <img class="pfp" src="https://lh3.googleusercontent.com/a-/ALV-UjUx-oPHkX12c7_q3nWyDXZMN4uARa9liC_gh-1CnvxaXRhhh_8p=s40-p">
+    </header>
+    <nav class="sidebar">
+      <div class="sidebarlink">
+        <img src="https://supersimple.dev/exercises/youtube/icons/home.svg">
+        <div>Home</div>
+      </div>
+      <div class="sidebarlink">
+        <img src="https://supersimple.dev/exercises/youtube/icons/explore.svg">
+        <div>Explore</div>
+      </div>
+      <div class="sidebarlink">
+        <img src="https://supersimple.dev/exercises/youtube/icons/subscriptions.svg">
+        <div>Subscriptions</div>
+      </div>
+      <div class="sidebarlink">
+        <img src="https://supersimple.dev/exercises/youtube/icons/originals.svg">
+        <div>Originals</div>
+      </div>
+      <div class="sidebarlink">
+        <img src="https://supersimple.dev/exercises/youtube/icons/youtube-music.svg">
+        <div>YouTube Music</div>
+      </div>
+      <div class="sidebarlink">
+        <img src="https://supersimple.dev/exercises/youtube/icons/library.svg">
+        <div>Library</div>
+      </div>
+    </nav>
+  <main>
+    <section class="grid">
+    <div class="preview">
+      <div class="thumbnail-row">
+      <a href="https://www.youtube.com/watch?v=o7hSsTgxqnQ&t=213s">
+        <img class="thumbnail" src="https://i.ytimg.com/vi/o7hSsTgxqnQ/hq720.jpg?sqp=-…BACGAY4AUAB&rs=AOn4CLArbplG7eBF6VZWb3Rp0ympNonynA">
+      </a>
+      <div class="video-time">9:22</div>
+      </div>
+      <div class="description">
+        <div class="profile">
+          <img class="pic" src="https://yt3.ggpht.com/36UdRntxB_MRz7-9rr-JbFLinzsb…fu4BCrcc9rUTbT1aJZWGD3Q=s68-c-k-c0x00ffffff-no-rj">
+
+        </div>
+       <div class="info">
+        <p class="title">
+          Prabhas Interview with Girl</p>
+          <p class="author">Telugu Filmnagar</p>
+          <p class="stats">530k views · 11 years ago</p>
+          </div>
+
+       </div> 
+      </div>
+      <div class="preview">
+        <div class="thumbnail-row">
+          <a href="https://www.youtube.com/watch?v=njr4L-qiBNQ">
+            <img class="thumbnail" src="https://i.ytimg.com/vi/njr4L-qiBNQ/hq720.jpg?sqp=-…BACGAY4AUAB&rs=AOn4CLDOKxYhK-rvjiIhrvsal-01ZogdQQ">
+          </a>
+        <div class="video-time">10:13</div>
+        </div>
+        <div class="description">
+          <div class="profile">
+            <img class="pic" src="https://yt3.ggpht.com/ytc/AIdro_lLyI_w1CQFfncH836p…fgE5dL0Fi4YfRJC3ay86gME=s88-c-k-c0x00ffffff-no-rj">
+  
+          </div>
+         <div class="info">
+          <p class="title">Intervention Video</p>
+            <p class="author">A&E</p>
+            <p class="stats">381k views · 10 months ago</p>
+            </div>
+  
+         </div> 
+        </div>
+        <div class="preview">
+          <div class="thumbnail-row">
+            <a href="https://www.youtube.com/watch?v=mR0KhrITCso">
+              <img class="thumbnail" src="https://i.ytimg.com/vi/mR0KhrITCso/hq720.jpg?sqp=-…BACGAY4AUAB&rs=AOn4CLAlrsJYRYPU8r469p1QpW3-jXAGtg">
+            </a>
+          <div class="video-time">2:27</div>
+          </div>
+          <div class="description">
+            <div class="profile">
+              <img class="pic" src="https://yt3.ggpht.com/ytc/AIdro_m_twHR1ELgUfLhKbzm…aX9vixhrUAeI5c7Jwl0VyTQ=s68-c-k-c0x00ffffff-no-rj">
+    
+            </div>
+           <div class="info">
+            <p class="title">
+              Naidorintikada</p>
+              <p class="author">Zee Music South</p>
+              <p class="stats">5.4M views · 4 year ago</p>
+              </div>
+    
+           </div> 
+          </div>
+          <div class="preview">
+            <div class="thumbnail-row">
+              <a href="https://www.youtube.com/watch?v=79XS4qpRw50">
+                <img class="thumbnail" src="https://i.ytimg.com/vi/79XS4qpRw50/hq720.jpg?sqp=-…BACGAY4AUAB&rs=AOn4CLBKeMUfSESTRVhUXzsOap9v-JOKDw">
+              </a>
+            
+            <div class="video-time">2:12</div>
+            </div>
+            <div class="description">
+              <div class="profile">
+                <img class="pic" src="netflix1.png">
+      
+              </div>
+             <div class="info">
+              <p class="title">
+              Rajamouli</p>
+                <p class="author">Netflix India</p>
+                <p class="stats">2.4M views · 6 months ago</p>
+                </div>
+      
+             </div> 
+            </div>
+            <div class="preview">
+              <div class="thumbnail-row">
+                <a href="https://www.youtube.com/watch?v=p1D-Q1VpOT0">
+                  <img class="thumbnail" src="https://i.ytimg.com/vi/p1D-Q1VpOT0/hq720.jpg?sqp=-…BACGAY4AUAB&rs=AOn4CLCEs-a87Fk7sHnxVy5xJXPPSuZCtQ">
+                </a>
+              
+              <div class="video-time">6:19</div>
+              </div>
+              <div class="description">
+                <div class="profile">
+                  <img class="pic" src="icons/david.jpg">
+        
+                </div>
+               <div class="info">
+                <p class="title">
+                  David and Liza break up :&#40</p>
+                  <p class="author">liza koshy fan</p>
+                  <p class="stats">471K views · 4 years ago</p>
+                  </div>
+        
+               </div> 
+              </div>
+              <div class="preview">
+                <div class="thumbnail-row">
+                  <a href="https://www.youtube.com/watch?v=20B3XpqTBmE">
+                    <img class="thumbnail" src="https://i.ytimg.com/vi/lJAk65hFF8E/hq720.jpg?sqp=-…BACGAY4AUAB&rs=AOn4CLBFPWVq7_RoDLs5pl4PFOyvTgKO4w">
+                  </a>
+                
+                <div class="video-time">3:21</div>
+                </div>
+                <div class="description">
+                  <div class="profile">
+                    <img class="pic" src="https://yt3.ggpht.com/eKjg4BB-mq9Mmr3MSW_xUr1nOHG2…yybxzqGK-Jqkn80P0k2kncA=s68-c-k-c0x00ffffff-no-rjg">
+          
+                  </div>
+                 <div class="info">
+                  <p class="title">
+                    
+   
+  
+Barbie life in the Dreamhouse!</p>
+                    <p class="author">Official Barbie YouTube Page</p>
+                    <p class="stats">357 views · 1 year ago</p>
+                    </div>
+          
+                 </div> 
+                </div>
+
+          
+              
+              </section>
+              </main>
+     
+  
+    
+    
+    
+    
+
+  </body>
+</html>
